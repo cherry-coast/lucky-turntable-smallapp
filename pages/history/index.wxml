@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+  <!--pages/index/index.wxml-->
+  <view>
+    <view class="top">
+      <view class="search">
+        <view class="search_in">
+          <!-- 使用代码请更改图片路径 -->
+          <image src="/images/history/search.png"></image>
+          <input type="text" placeholder="请输入奖品"/>
+          <view class="search_btn">搜索</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="list">
+    <view wx:for="{{prizeList}}" wx:key="key">
+      <view class="item">
+        <image class="index" src="/images/history/gift.png"></image>
+        <view class="prize-info">
+          <view class="prize-name">{{item.prizeName}}</view>
+          <view class="prize-date">中奖时间： {{item.winningDate}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

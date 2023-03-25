@@ -1,0 +1,47 @@
+<view class="canvasl">
+  <view class="head">
+    <view class="head-bg-image"></view>
+    <view class="bottom-bg-image"></view>
+  </view>
+  <view class="wrapper">
+    <view class="wrapper-content" style='margin:0 auto;'>
+      <view class="canvas-container-quiu" wx:for="{{list}}" wx:key="key" style="-webkit-transform: rotate({{index * (360/list.length)}}deg);background-color:{{index%2==0?'#F2E86D':'#ffffff'}};transform: rotate({{index * (360/list.length)}}deg) "></view>
+      <view class="canvas-container">
+        <view animation="{{animationData}}" class="canvas-content" style='margin:0 auto;' bindtransitionend='animationend'>
+          <!-- 扇形 -->
+          <view class="canvas-list">
+            <view class="canvas-item2" wx:for="{{awardsConfig.slicePrizes}}" wx:key="key" style="transform: rotate({{item.item2Deg}});background-color:{{awardsConfig.slicePrizes.length==2?(index%2==0?'#fdf5f2':'#fbeae6'):''}};opacity:{{  awardsConfig.slicePrizes.length==2?item.opacity:  awardsConfig.slicePrizes.length==3?item.opacity:''}};width:{{size}}rpx;height:{{size/2}}rpx;transform-origin:{{size/2}}rpx {{size/2}}rpx">
+              <view class="canvas-item2-after" style="transform: rotate({{item.afterDeg}});background-color:{{index%2==0?'#fdf5f2':'#fbeae6'}};opacity:{{  awardsConfig.slicePrizes.length==3?'':item.opacity}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx">
+              </view>
+              <view wx:if='{{awardsConfig.slicePrizes.length==3}}' class="canvas-item2-after" style="background-color:{{index%2==0?'#fdf5f2':'#fbeae6'}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx"></view>
+            </view>
+          </view>
+          <!-- 选项内容 -->
+          <view class="gb-wheel-list">
+            <view class="gb-wheel-item" data-index="{{index}}" wx:for="{{awardsConfig.slicePrizes}}" wx:key='key'>
+              <view class="gb-wheel-icontent" style="height:262rpx;overflow:hidden;font-size:{{item.text.length>9?'20':'26'}}rpx;padding-top:5rpx;transform: rotate({{index*turnNum}}turn);transform-origin: 50% {{size/2-2}}rpx">
+                <view class="canvas-litem-text-name">{{item.prizeName}}</view>
+                <view class="canvas-litem-text-image">
+                  <image src="{{item.prizeImage}}" mode="widthFix" style="width:80rpx;max-height:60rpx;padding:10rpx 0 0;"></image>
+                  <!-- <view class="canvas-litem-text-image-num">100</view> -->
+                </view>
+                <view style="font-size:20rpx;">{{item.prizeNum}} {{item.prizeUnit}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="canvas-btn" bindtap="getLottery">
+          <view class="canvas-btn-text">
+            <view style="font-size:56rpx;color:#fff;padding-bottom:4rpx;">开始</view>
+            <view style="font-size:20rpx;color:#6F5942;font-weight:600;">点击抽奖</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 底座 -->
+    <view class="lampstand">
+      <view class="lampstand-item"></view>
+      <view class="lampstand-item"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/history/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "抽奖",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabBar-icon/lottery-no-select.png",
+        "selectedIconPath": "images/tabBar-icon/lottery-select.png"
+      },
+      {
+        "text": "奖品",
+        "pagePath": "pages/history/index",
+        "iconPath": "images/tabBar-icon/history-no-select.png",
+        "selectedIconPath": "images/tabBar-icon/history-select.png"
+      }
+    ],
+    "color": "#cdcdcd",
+    "selectedColor": "#EFB721"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
