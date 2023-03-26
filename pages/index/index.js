@@ -26,6 +26,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+    console.log(wx.getStorageSync('token'))
     if(wx.getStorageSync('token') === null || wx.getStorageSync('token') === '' || wx.getStorageSync('token') == undefined) {
       wx.showToast({
         title: '加载奖品中~', //提示的内容
@@ -145,7 +146,9 @@ Page({
   animationend(){
     let awardsConfig = this.data.awardsConfig, awardIndex = this.data.awardIndex
     wx.showToast({
-      title: '今日吃' + awardsConfig.slicePrizes[awardIndex].prizeName,
+      icon: 'none', //图标有success、error、loading、none四种
+      mask: true, //显示透明蒙层 防止触摸穿透
+      title: '恭喜你，获得了' + awardsConfig.slicePrizes[awardIndex].prizeName + '~',
     })
     
     this.setData({

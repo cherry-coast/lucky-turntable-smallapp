@@ -25,6 +25,8 @@ App({
               }
             ).then(res => {
               wx.setStorageSync('token', res.data);
+            }).catch(res => {
+              console.log(res)
             });
           }
         })

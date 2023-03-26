@@ -1,6 +1,6 @@
 const prodUrl = 'https://www.cherry-coast.com:8787'
 const testUrl = 'https://127.0.0.1:8787'
-const baseUrl = testUrl
+const baseUrl = prodUrl
 
 var app = getApp()
 
