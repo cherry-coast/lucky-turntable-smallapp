@@ -1,6 +1,6 @@
 const prodUrl = 'https://www.cherry-coast.com:8787'
 const testUrl = 'https://127.0.0.1:8787'
-const baseUrl = prodUrl
+const baseUrl = testUrl
 
 var app = getApp()
 
@@ -70,12 +70,15 @@ const getHeader = url => {
 
 const errorProcess = res => {
   if(res.statusCode === 401) {
+    wx.setStorageSync('token', '');
     wx.showToast({
       title: '登录失效，请刷新小程序重新进入~',
       duration: 2000,
       icon: 'none',
       mask: true 
     })
+  } else if (res) {
+
   } else {
     wx.showToast({
       title: '小程序获取你的奖品失败，请检查配置~', //提示的内容

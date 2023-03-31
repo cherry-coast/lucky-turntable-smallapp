@@ -26,17 +26,18 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-    console.log(wx.getStorageSync('token'))
+    
     if(wx.getStorageSync('token') === null || wx.getStorageSync('token') === '' || wx.getStorageSync('token') == undefined) {
       wx.showToast({
         title: '加载奖品中~', //提示的内容
-        duration: 2000, //持续的时间
+        duration: 3000, //持续的时间
         icon: 'loading', //图标有success、error、loading、none四种
         mask: true //显示透明蒙层 防止触摸穿透
       })
       setTimeout(() => {
+        console.log(wx.getStorageSync('token'))
         that.getPrize();
-      }, 2000)
+      }, 3000)
     } else {
       that.getPrize();
     }
@@ -63,12 +64,14 @@ Page({
         },
       })
     }).catch(err => {
-      if(err.statusCode === 401) {
-        let page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad(page.options)
-        app.login();
-      }
+      request.errorProcess(err)
+      // console.log(err)
+      // if(err.statusCode === 401) {
+      //   let page = getCurrentPages().pop();
+      //   if (page == undefined || page == null) return;
+      //   page.onLoad(page.options)
+      //   app.login();
+      // }
     });
   },
   onShow: function() {
